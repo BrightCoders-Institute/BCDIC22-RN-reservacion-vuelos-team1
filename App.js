@@ -1,15 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { View } from 'react-native';
-import Auth from './components/Auth';
-import styles from './styles/styles';
+import { StatusBar } from 'expo-status-bar'
+import React from 'react'
+import { View } from 'react-native'
+import PantallaLog from './src/views/pantallaLog/pantallaLog'
+import Constants from 'expo-constants'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Auth/> 
+    <View style={{ marginTop: Constants.statusBarHeight }}>
+      <PantallaLog />
     </View>
-  );
+  )
 }
-
-

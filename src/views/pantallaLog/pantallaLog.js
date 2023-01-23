@@ -42,6 +42,9 @@ export default function PantallaLog() {
       <View style={styles.segundoBoton}>
         <BotonSUG />
       </View>
+      <View>
+        <Text style={styles.TextoFuter}>Already have an account? Login</Text>
+      </View>
     </View>
   )
 }

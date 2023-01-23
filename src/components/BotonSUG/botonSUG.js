@@ -2,9 +2,9 @@ import React from 'react'
 import { Text, TouchableOpacity, View, Image } from 'react-native'
 import styles from './styles'
 
-export const BotonSUG = () => {
+export const BotonSUG = ({onPress}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.Buton}>
         <Image
           style={styles.image}

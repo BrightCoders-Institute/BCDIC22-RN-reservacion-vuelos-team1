@@ -3,12 +3,13 @@ import { View, Text, Image } from 'react-native'
 import styles from './styles'
 import { TextInput } from 'react-native-paper'
 
-export const CajaTextoVisible = () => {
-  const [pass, setPass] = useState(true)
 
+export const CajaTextoVisible = ({onChangeText}) => {
+  const [pass, setPass] = useState(true)
   return (
     <View style={styles.input}>
       <TextInput
+        onChangeText={onChangeText}
         style={styles.inputText}
         right={
           <TextInput.Icon

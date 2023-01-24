@@ -13,8 +13,7 @@ export const BotonSUG = ({onPress}) => {
           }}
         />
 
-        <Text style={styles.TextoBoton}> Sing Up with Google </Text>
-        <Text style={styles.TextoBoton}> Sing Up with Google </Text>
+        <Text style={styles.TextoBoton}> Sign Up with Google </Text>
       </View>
     </TouchableOpacity>
   )

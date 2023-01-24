@@ -37,7 +37,7 @@ export default StyleSheet.create({
   },
   Textobajo: {
     color: 'grey',
-    fontFamily: 'arial',
+    fontFamily: 'Arial',
     fontSize: 15.5,
     marginLeft: 20,
     marginTop: 20,
@@ -51,10 +51,17 @@ export default StyleSheet.create({
   },
   TextoOr: {
     color: 'grey',
-    fontFamily: 'arial',
+    fontFamily: 'Arial',
     fontSize: 20,
     marginLeft: 118,
     marginTop: 10,
+  },
+  TextoFuter: {
+    color: 'grey',
+    fontFamily: 'Arial',
+    fontSize: 17.5,
+    marginTop: 15,
+    marginLeft: 90,
   },
 
   /* componentes react n paper*/

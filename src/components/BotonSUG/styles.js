@@ -11,12 +11,13 @@ export default StyleSheet.create({
   },
   TextoBoton: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 19,
     margin: 1,
   },
   image: {
     width: 40,
     height: 40,
     margin: 3,
+    marginLeft: 70,
   },
 })

@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import { View } from 'react-native'
 import PantallaLog from './src/views/pantallaLog/pantallaLog'
+import PantallaRegis from './src/views/pantallaRegis/pantallaRegis'
 import Constants from 'expo-constants'
 
 export default function App() {

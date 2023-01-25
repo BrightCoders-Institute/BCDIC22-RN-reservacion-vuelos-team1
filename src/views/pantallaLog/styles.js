@@ -9,28 +9,24 @@ export default StyleSheet.create({
   /* Textos de la la primera pantalla*/
   TextoSing: {
     color: 'blue',
-    fontFamily: 'arial',
     fontSize: 25,
     marginLeft: 20,
     marginTop: 50,
   },
   Textoname: {
     color: 'grey',
-    fontFamily: 'arial',
     fontSize: 18,
     marginLeft: 20,
     marginTop: 40,
   },
   Textocorreo: {
     color: 'grey',
-    fontFamily: 'arial',
     fontSize: 18,
     marginLeft: 20,
     marginTop: 40,
   },
   TextoPass: {
     color: 'grey',
-    fontFamily: 'arial',
     fontSize: 18,
     marginLeft: 20,
     marginTop: 40,

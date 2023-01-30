@@ -1,9 +1,9 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import styles from './styles'
 import { TextInput } from 'react-native-paper'
 
-export const CajaTexto = ({onChangeText}) => {
+export const CajaTexto = ({ onChangeText }) => {
   return (
     <View style={styles.input}>
       <TextInput

@@ -3,6 +3,7 @@ import React from 'react'
 import { View } from 'react-native'
 import PantallaRegis from './src/views/pantallaRegis/pantallaRegis'
 import Constants from 'expo-constants'
+import { Navigation } from './src/views/navigation/navigation'
 import PantallaOrigen from './src/views/pantallaOriDes/pantallaOrigen'
 import PantallaOriDes from './src/views/pantallaOriDes/pantallaDestino'
 import PantallaCalendario from './src/views/pantallaOriDes/pantallaCalendario'
@@ -10,13 +11,8 @@ import PantallaPasajeros from './src/views/pantallaOriDes/pantallaPasajeros'
 
 export default function App() {
   return (
-    <View style={{ marginTop: Constants.statusBarHeight }}>
-      <PantallaRegis />
-      {/* <PantallaLogin /> */}
-      {/* <PantallaOrigen /> */}
-      {/* <PantallaOriDes /> */}
-      {/* <PantallaCalendario /> */}
-      {/* <PantallaPasajeros />B */}
-    </View>
+  
+      <Navigation/>
+    
   )
 }

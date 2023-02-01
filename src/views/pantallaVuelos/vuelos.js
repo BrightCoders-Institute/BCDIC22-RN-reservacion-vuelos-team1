@@ -19,7 +19,7 @@ export default function Vuelos() {
           <CartaVuelo />
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.addLocation}>
+      <TouchableOpacity style={styles.addLocation} >
         <View style={styles.add}>
           <Ionicons
             style={styles.addIcon}

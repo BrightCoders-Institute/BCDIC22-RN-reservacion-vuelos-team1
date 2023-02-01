@@ -7,11 +7,11 @@ import styles from './styles';
 import { Calendar } from 'react-native-calendars';
 
 
-const PantallaCalendario = () => {
+const PantallaCalendario = ({navigation}) => {
   return (
     <View>
       <View style={styles.btnAtras}>
-        <Button style={styles.btnBack} icon="arrow-left" mode="text" >
+        <Button style={styles.btnBack} icon="arrow-left" mode="text" onPress={()=> {navigation.navigate('Destino')}}>
 
         </Button>
       </View>
@@ -31,7 +31,7 @@ const PantallaCalendario = () => {
         />
       </View>
       <View style={styles.btn}>
-        <Button disabled={true} mode='outlined' buttonColor='grey' textColor='white' style={styles.btnNext} >
+        <Button disabled={false} mode='outlined' buttonColor='grey' textColor='white' style={styles.btnNext} onPress={()=> {navigation.navigate('Pasajeros')}}>
           Next
         </Button>
       </View>

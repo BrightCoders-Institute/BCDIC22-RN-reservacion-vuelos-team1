@@ -6,13 +6,13 @@ import CiudadPais from '../../components/ciudadPais/ciudadPais';
 import styles from './styles';
 import WheelPicker from 'react-native-wheely';
 
-const PantallaPasajeros = () => {
+const PantallaPasajeros = ({navigation}) => {
 
     const [selectedIndex, setSelectedIndex] = useState(0);
     return (
         <View>
             <View style={styles.btnAtras}>
-                <Button style={styles.btnBack} icon="arrow-left" mode="text" >
+                <Button style={styles.btnBack} icon="arrow-left" mode="text" onPress={()=> {navigation.navigate('Calendario')}} >
 
                 </Button>
             </View>
@@ -39,7 +39,7 @@ const PantallaPasajeros = () => {
 
             </View>
             <View style={styles.btn}>
-                <Button disabled={true} mode='outlined' buttonColor='grey' textColor='white' style={styles.btnNext} >
+                <Button disabled={false} mode='outlined' buttonColor='grey' textColor='white' style={styles.btnNext} >
                     Next
                 </Button>
             </View>

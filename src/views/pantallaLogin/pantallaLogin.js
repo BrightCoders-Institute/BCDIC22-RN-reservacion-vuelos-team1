@@ -10,17 +10,21 @@ import { BotonSUG } from '../../components/BotonSUG/botonSUG'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { app } from '../../../firebaseconfig'
 
+
+
 const auth = getAuth(app)
 
-export default function PantallaLogin() {
+export default function PantallaLogin({navigation}) {
   const [user, setUser] = useState({
     email: '',
     password: '',
   })
 
   //funcion inicio de sesion correo
-  const logIn = () => {
+  const logIn = (navigation) => {
     signInWithEmailAndPassword(auth, user.email, user.password)
+    navigation.navigate('Origen')
+    
   }
   return (
     // <CajaTexto />
@@ -38,7 +42,7 @@ export default function PantallaLogin() {
         </Text>
       </View>
       <View style={styles.primerBoton}>
-        <BotonSUP onPress={logIn} />
+        <BotonSUP onPress={()=>{logIn(navigation)}} />
       </View>
       <Text style={styles.TextoOr}>----------------or----------------</Text>
       <View style={styles.segundoBoton}>

@@ -19,7 +19,7 @@ const auth = getAuth(app)
 //proveedor de gugul
 const provider = new GoogleAuthProvider()
 
-export default function PantallaRegis() {
+export default function PantallaRegis({navigation}) {
   const [user, setUser] = useState({
     firstName: '',
     email: '',
@@ -103,7 +103,7 @@ export default function PantallaRegis() {
       </View>
       <Text style={styles.TextoOr}>----------------or----------------</Text>
       <View style={styles.segundoBoton}>
-        <BotonSUG onPress={singInGoogle} />
+        <BotonSUG onPress={singInGoogle}  />
       </View>
     </ScrollView>
   )

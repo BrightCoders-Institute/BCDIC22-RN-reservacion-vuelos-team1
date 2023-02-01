@@ -5,11 +5,11 @@ import { Button, TextInput } from 'react-native-paper';
 import CiudadPais from '../../components/ciudadPais/ciudadPais';
 import styles from './styles';
 
-const PantallaDestino = () => {
+const PantallaDestino = ({navigation}) => {
   return (
     <View>
       <View style={styles.btnAtras}>
-        <Button style={styles.btnBack} icon="arrow-left" mode="text" >
+        <Button style={styles.btnBack} icon="arrow-left" mode="text" onPress={()=> {navigation.navigate('Origen')}} >
             
         </Button>
       </View>
@@ -31,7 +31,7 @@ const PantallaDestino = () => {
         />
       </View>
       <View style={styles.btn}>
-        <Button disabled={true} mode='outlined' buttonColor='grey' textColor='white' style={styles.btnNext} >
+        <Button disabled={false} mode='outlined' buttonColor='grey' textColor='white' style={styles.btnNext} onPress={()=> {navigation.navigate('Calendario')}} >
             Next
         </Button>
       </View>

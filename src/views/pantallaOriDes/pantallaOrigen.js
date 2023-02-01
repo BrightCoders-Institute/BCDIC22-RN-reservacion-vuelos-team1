@@ -4,11 +4,11 @@ import Titulo from '../../components/titulo/titulo'
 import { Button, TextInput } from 'react-native-paper';
 import styles from './styles';
 
-const PantallaOrigen = () => {
+const PantallaOrigen = ({navigation}) => {
   return (
     <View>
       <View style={styles.btnAtras}>
-        <Button style={styles.btnBack} icon="arrow-left" mode="text" >
+        <Button style={styles.btnBack} icon="arrow-left" mode="text" onPress={()=> {navigation.navigate('Login')}} >
             
         </Button>
       </View>
@@ -27,7 +27,7 @@ const PantallaOrigen = () => {
         />
       </View>
       <View style={styles.btn}>
-        <Button disabled={true} mode='outlined' buttonColor='grey' textColor='white' style={styles.btnNext} >
+        <Button disabled={false} mode='outlined' buttonColor='grey' textColor='white' style={styles.btnNext} onPress={()=> {navigation.navigate('Destino')}} >
             Next
         </Button>
       </View>

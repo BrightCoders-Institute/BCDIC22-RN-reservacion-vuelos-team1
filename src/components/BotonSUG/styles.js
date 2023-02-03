@@ -20,4 +20,12 @@ export default StyleSheet.create({
     margin: 3,
     marginLeft: 70,
   },
+  ButonActivate: {
+    backgroundColor: 'blue',
+    height: 50,
+    width: 380,
+    borderRadius: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 })

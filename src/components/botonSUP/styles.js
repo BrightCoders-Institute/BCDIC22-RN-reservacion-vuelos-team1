@@ -13,4 +13,11 @@ export default StyleSheet.create({
     fontSize: 20,
     marginTop: 10,
   },
+  ButonActivate: {
+    backgroundColor: 'blue',
+    height: 50,
+    width: 380,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
 })

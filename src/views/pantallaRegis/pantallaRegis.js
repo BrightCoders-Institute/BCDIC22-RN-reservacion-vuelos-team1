@@ -1,4 +1,11 @@
-import { View, Text, Button, ScrollView, Alert } from 'react-native'
+import {
+  View,
+  Text,
+  Button,
+  ScrollView,
+  Alert,
+  TouchableOpacity,
+} from 'react-native'
 import React, { useState } from 'react'
 import { CajaTexto } from '../../components/cajaTexto/cajaTexto'
 import { CajaTextoVisible } from '../../components/cajaTextoVisible/cajaTextoVisible'
@@ -16,7 +23,6 @@ import {
 } from 'firebase/auth'
 import { app } from '../../../firebaseconfig'
 
-
 const auth = getAuth(app)
 //proveedor de gugul
 const provider = new GoogleAuthProvider()
@@ -32,7 +38,7 @@ export default function PantallaRegis({ navigation }) {
   //validacion campos
 
   const validation = () => {
-    if (user.email === '' || user.password === '' || !user.checkout ) {
+    if (user.email === '' || user.password === '' || !user.checkout) {
       return false
     } else {
       return true
@@ -114,8 +120,7 @@ export default function PantallaRegis({ navigation }) {
           </Text>
         </View>
         <View style={styles.SegundoCheck}>
-          {/* <Check /> */}
-          <CheckSubscribe checkout={false}/>
+          <CheckSubscribe />
           <Text style={styles.TextoCheck}>
             Subscribe for select product updates
           </Text>
@@ -124,9 +129,25 @@ export default function PantallaRegis({ navigation }) {
       <View style={styles.primerBoton}>
         <BotonSUP disabled={!validation()} onPress={singUp} />
       </View>
-      <Text style={styles.TextoOr}>----------------or----------------</Text>
+      <View>
+        <Text style={styles.TextoOr}>or</Text>
+      </View>
       <View style={styles.segundoBoton}>
         <BotonSUG disabled={!validation()} onPress={singInGoogle} />
+      </View>
+
+      <View>
+        <Text style={styles.TextoOr}>
+          already have an account?
+          <TouchableOpacity
+            onPress={() => {
+              console.log('Login')
+              navigation.navigate('Login')
+            }}
+          >
+            <Text style={styles.TextoLogin}> Login</Text>
+          </TouchableOpacity>
+        </Text>
       </View>
     </ScrollView>
   )

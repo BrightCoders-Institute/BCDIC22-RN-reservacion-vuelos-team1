@@ -39,24 +39,30 @@ export default StyleSheet.create({
   },
   TextoCheck: {
     color: 'grey',
-    fontFamily: 'Arial',
+
     fontSize: 17.5,
-    textAlignVertical: 'center',
+    textAlign: 'center',
     fontWeight: '100',
   },
   TextoOr: {
     color: 'grey',
-    fontFamily: 'Arial',
-    fontSize: 20,
-    marginLeft: 118,
+    fontSize: 15,
+    textAlign: 'center',
     marginTop: 10,
+    flexDirection: 'row',
   },
   TextoFuter: {
     color: 'grey',
-    fontFamily: 'Arial',
+
     fontSize: 17.5,
     marginTop: 15,
     marginLeft: 90,
+  },
+  TextoLogin: {
+    color: 'blue',
+
+    fontSize: 15,
+    marginTop: 10,
   },
 
   /* componentes react n paper*/

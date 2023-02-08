@@ -8,7 +8,7 @@ export default StyleSheet.create({
   },
   /* Textos de la la primera pantalla*/
   btnAtras:{
-    height: '8%',
+    height: '10%',
     // backgroundColor: '#123456',
     padding: 10
 
@@ -39,9 +39,10 @@ export default StyleSheet.create({
     borderRadius: 8,
   },
   btnBack: {
-    // backgroundColor:'black',
+    marginTop: 40,
+    
     borderRadius: 8,
-    width: '7%'
+    width: 50,
   },
   
 })

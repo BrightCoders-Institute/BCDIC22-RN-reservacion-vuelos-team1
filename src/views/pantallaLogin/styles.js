@@ -33,9 +33,16 @@ export default StyleSheet.create({
   },
   TextoOr: {
     color: 'grey',
-    fontSize: 20,
-    marginLeft: 118,
-    marginTop: 25,
+    fontSize: 15,
+    textAlign: 'center',
+    marginTop: 30,
+    flexDirection: 'row',
+  },
+  TextoRegistra: {
+    color: 'blue',
+
+    fontSize: 15,
+    marginTop: 10,
   },
 
   /* componentes Boton*/

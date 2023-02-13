@@ -6,20 +6,27 @@ import { Ionicons } from '@expo/vector-icons'
 
 import styles from './styles'
 
-export default function Vuelos() {
+export default function Vuelos({ navigation }) {
   return (
     <View style={{ height: '100%' }}>
       <ScrollView>
         <View>
           <View>
-            <Text>My flights</Text>
+            <Text style={styles.TextoMyF}>My flights</Text>
           </View>
+          <CartaVuelo />
+          <CartaVuelo />
           <CartaVuelo />
           <CartaVuelo />
           <CartaVuelo />
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.addLocation} >
+      <TouchableOpacity
+        style={styles.addLocation}
+        onPress={() => {
+          navigation.navigate('Origen')
+        }}
+      >
         <View style={styles.add}>
           <Ionicons
             style={styles.addIcon}

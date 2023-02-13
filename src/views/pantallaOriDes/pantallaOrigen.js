@@ -1,11 +1,27 @@
 import { View, Text } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
-import { React } from 'react'
+import React, { useState } from 'react'
 import Titulo from '../../components/titulo/titulo'
 import { Button, TextInput } from 'react-native-paper'
 import styles from './styles'
+import { CajaTexto } from '../../components/cajaTexto/cajaTexto'
+import { BotonSUP } from '../../components/botonSUP/botonSUP'
+import WheelPicker from 'react-native-wheely'
 
 const PantallaOrigen = ({ navigation }) => {
+  const [Location, setLocation] = useState({
+    Location: '',
+  })
+  const [origen, setOrigen] = useState(0)
+
+  const validation = () => {
+    if (Location.Location === '') {
+      return false
+    } else {
+      return true
+    }
+  }
+
   return (
     <View>
       <View style={styles.btnAtras}>
@@ -25,26 +41,18 @@ const PantallaOrigen = ({ navigation }) => {
         <Titulo title="Where are you now?" />
       </View>
       <View style={styles.seleccion}>
-        <TextInput
-          text="required"
-          mode="flat"
-          label=""
-          placeholder="Select location"
+        <CajaTexto
+          onChangeText={(text) => setLocation({ ...Location, Location: text })}
         />
       </View>
       <View style={styles.btn}>
-        <Button
-          disabled={false}
-          mode="outlined"
-          buttonColor="grey"
-          textColor="white"
-          style={styles.btnNext}
+        <BotonSUP
+          title="Next"
+          disabled={!validation()}
           onPress={() => {
             navigation.navigate('Destino')
           }}
-        >
-          Next
-        </Button>
+        />
       </View>
     </View>
   )

@@ -58,15 +58,23 @@ export default function PantallaLogin({ navigation }) {
       </View>
       <View style={styles.primerBoton}>
         <BotonSUP
+          title="Login"
           disabled={!validation()}
           onPress={async () => {
             await logIn()
           }}
         />
       </View>
+
       <Text style={styles.TextoOr}>or</Text>
       <View style={styles.segundoBoton}>
-        <BotonSUG disabled={!validation()} onPress={logIn} />
+        <BotonSUG
+          title="Login with Google"
+          disabled={!validation()}
+          onPress={async () => {
+            await logIn()
+          }}
+        />
       </View>
 
       <View>

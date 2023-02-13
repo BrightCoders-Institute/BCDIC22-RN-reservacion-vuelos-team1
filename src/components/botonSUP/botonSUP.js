@@ -2,15 +2,13 @@ import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import styles from './styles'
 
-export const BotonSUP = ({ disabled, onPress }) => {
+export const BotonSUP = ({ disabled, onPress, title }) => {
   return (
     <TouchableOpacity
       style={disabled ? styles.Buton : styles.ButonActivate}
-      onPress={onPress}
+      onPress={disabled ? null : onPress}
     >
-      <View>
-        <Text style={styles.TextoBoton}> Sign Up </Text>
-      </View>
+      <Text style={styles.titulo}>{title}</Text>
     </TouchableOpacity>
   )
 }

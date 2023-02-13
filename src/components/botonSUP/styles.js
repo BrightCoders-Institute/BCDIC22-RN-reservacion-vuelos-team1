@@ -7,6 +7,7 @@ export default StyleSheet.create({
     width: 380,
     borderRadius: 10,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   TextoBoton: {
     color: 'white',
@@ -19,5 +20,12 @@ export default StyleSheet.create({
     width: 380,
     borderRadius: 10,
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  titulo: {
+    color: '#ffffff',
+    fontSize: 23,
+    fontWeight: '80',
+    textAlign: 'center',
   },
 })

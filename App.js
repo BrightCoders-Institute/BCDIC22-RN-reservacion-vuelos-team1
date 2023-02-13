@@ -8,11 +8,14 @@ import PantallaOrigen from './src/views/pantallaOriDes/pantallaOrigen'
 import PantallaOriDes from './src/views/pantallaOriDes/pantallaDestino'
 import PantallaCalendario from './src/views/pantallaOriDes/pantallaCalendario'
 import PantallaPasajeros from './src/views/pantallaOriDes/pantallaPasajeros'
+import Vuelos from './src/views/pantallaVuelos/vuelos'
 
 export default function App() {
   return (
-  
-      <Navigation/>
-    
+    // <PantallaOrigen />
+    // <PantallaOriDes />
+    // <PantallaCalendario />
+    <Navigation />
+    // <Vuelos />
   )
 }

@@ -28,4 +28,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  titulo: {
+    color: 'white',
+    fontSize: 23,
+    fontWeight: '80',
+  },
 })

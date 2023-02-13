@@ -49,6 +49,7 @@ export default StyleSheet.create({
   primerBoton: {
     marginTop: 30,
     alignItems: 'center',
+    color: 'red',
   },
   segundoBoton: {
     marginTop: 30,

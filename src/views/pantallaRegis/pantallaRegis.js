@@ -45,13 +45,6 @@ export default function PantallaRegis({ navigation }) {
     }
   }
 
-  //validacion contra
-
-  function checkpass(srt) {
-    const re = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/gm
-    return user.password.match(re)
-  }
-
   //funcion crear cuenta
   const singUp = () => {
     createUserWithEmailAndPassword(auth, user.email, user.password)
@@ -87,11 +80,6 @@ export default function PantallaRegis({ navigation }) {
         const errorCode = error.code
         const errorMessage = error.message
         Alert.alert(errorCode, errorMessage)
-        // The email of the user's account used.
-        const email = error.customData.email
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error)
-        // ...
       })
   }
 
@@ -127,13 +115,17 @@ export default function PantallaRegis({ navigation }) {
         </View>
       </View>
       <View style={styles.primerBoton}>
-        <BotonSUP disabled={!validation()} onPress={singUp} />
+        <BotonSUP title="Sign Up" disabled={!validation()} onPress={singUp} />
       </View>
       <View>
         <Text style={styles.TextoOr}>or</Text>
       </View>
       <View style={styles.segundoBoton}>
-        <BotonSUG disabled={!validation()} onPress={singInGoogle} />
+        <BotonSUG
+          title="sign up with google"
+          disabled={!validation()}
+          onPress={singInGoogle}
+        />
       </View>
 
       <View>

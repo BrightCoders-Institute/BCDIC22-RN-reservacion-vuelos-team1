@@ -10,6 +10,7 @@ import PantallaDestino from '../pantallaOriDes/pantallaDestino'
 import PantallaOrigen from '../pantallaOriDes/pantallaOrigen'
 import PantallaRegis from '../pantallaRegis/pantallaRegis'
 import Vuelos from '../pantallaVuelos/vuelos'
+import PantallaVueloF from '../pantallaOriDes/pantallaVueloF'
 
 const Stack = createNativeStackNavigator()
 
@@ -51,6 +52,11 @@ export const Navigation = () => {
           <Stack.Screen
             name="Vuelos"
             component={Vuelos}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="RegistroFinalV"
+            component={PantallaVueloF}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

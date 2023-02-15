@@ -6,16 +6,13 @@ import { Button, TextInput } from 'react-native-paper'
 import styles from './styles'
 import { CajaTexto } from '../../components/cajaTexto/cajaTexto'
 import { BotonSUP } from '../../components/botonSUP/botonSUP'
-import WheelPicker from 'react-native-wheely'
 
 const PantallaOrigen = ({ navigation }) => {
-  const [Location, setLocation] = useState({
-    Location: '',
-  })
+  const [location, setLocation] = useState('')
   const [origen, setOrigen] = useState(0)
 
   const validation = () => {
-    if (Location.Location === '') {
+    if (location === '') {
       return false
     } else {
       return true
@@ -41,16 +38,14 @@ const PantallaOrigen = ({ navigation }) => {
         <Titulo title="Where are you now?" />
       </View>
       <View style={styles.seleccion}>
-        <CajaTexto
-          onChangeText={(text) => setLocation({ ...Location, Location: text })}
-        />
+        <CajaTexto onChangeText={(text) => setLocation(text)} />
       </View>
       <View style={styles.btn}>
         <BotonSUP
           title="Next"
           disabled={!validation()}
           onPress={() => {
-            navigation.navigate('Destino')
+            navigation.navigate('Destino', { origen: location })
           }}
         />
       </View>

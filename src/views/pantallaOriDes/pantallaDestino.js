@@ -7,13 +7,11 @@ import styles from './styles'
 import { BotonSUP } from '../../components/botonSUP/botonSUP'
 import { CajaTexto } from '../../components/cajaTexto/cajaTexto'
 
-const PantallaDestino = ({ navigation }) => {
-  const [Location, setLocation] = useState({
-    Location: '',
-  })
+const PantallaDestino = ({ route, navigation }) => {
+  const [location, setLocation] = useState('')
 
   const validation = () => {
-    if (Location.Location === '') {
+    if (location === '') {
       return false
     } else {
       return true
@@ -34,7 +32,7 @@ const PantallaDestino = ({ navigation }) => {
       </View>
       <View style={styles.origenDestino}>
         <Text style={styles.origen}>
-          <CiudadPais ciudad="Paris" pais="Francia" />{' '}
+          <CiudadPais ciudad={route.params.origen} pais={route.params.origen} />{' '}
         </Text>
         <Text style={styles.iconoAvion}>
           {' '}
@@ -50,16 +48,17 @@ const PantallaDestino = ({ navigation }) => {
       </View>
 
       <View style={styles.seleccion}>
-        <CajaTexto
-          onChangeText={(Text) => setLocation({ ...Location, Location: Text })}
-        />
+        <CajaTexto onChangeText={(text) => setLocation(text)} />
       </View>
       <View style={styles.btn}>
         <BotonSUP
           title="Next"
           disabled={!validation()}
           onPress={() => {
-            navigation.navigate('Calendario')
+            navigation.navigate('Calendario', {
+              origen: route.params.origen,
+              destino: location,
+            })
           }}
         />
       </View>

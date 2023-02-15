@@ -6,11 +6,7 @@ import styles from './styles'
 import { BotonSUP } from '../../components/botonSUP/botonSUP'
 import { BotonSUG } from '../../components/BotonSUG/botonSUG'
 
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import { app } from '../../../firebaseconfig'
-import { Title } from 'react-native-paper'
-
-const auth = getAuth(app)
+import { auth, GoogleSignin } from '../../../firebaseconfig'
 
 export default function PantallaLogin({ navigation }) {
   const [user, setUser] = useState({
@@ -27,11 +23,27 @@ export default function PantallaLogin({ navigation }) {
       return true
     }
   }
+  const loginGoogle = async () => {
+    try {
+      await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true })
+      const idToken = (await GoogleSignin.signIn()).idToken
+      const credential = auth.GoogleAuthProvider.credential(idToken)
+      await auth().signInWithCredential(credential)
+      navigation.navigate('Vuelos')
+    } catch (error) {
+      console.log(error)
+      if (error instanceof Error) {
+        Alert.alert('Error', error.message)
+      } else {
+        console.error(error)
+      }
+    }
+  }
 
   //funcion inicio de sesion correo
   const logIn = async () => {
     try {
-      await signInWithEmailAndPassword(auth, user.email, user.password)
+      await auth().signInWithEmailAndPassword(user.email, user.password)
       navigation.navigate('Origen')
     } catch (error) {
       const errorCode = error.code
@@ -72,7 +84,7 @@ export default function PantallaLogin({ navigation }) {
           title="Login with Google"
           disabled={!validation()}
           onPress={async () => {
-            await logIn()
+            await loginGoogle()
           }}
         />
       </View>

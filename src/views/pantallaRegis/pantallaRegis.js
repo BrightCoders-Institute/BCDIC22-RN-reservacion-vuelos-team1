@@ -16,19 +16,6 @@ import { BotonSUG } from '../../components/BotonSUG/botonSUG'
 import { CheckSubscribe } from '../../components/check/checkSubscribe'
 import { auth, GoogleSignin } from '../../../firebaseconfig'
 
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from 'firebase/auth'
-import { app } from '../../../firebaseconfig'
-import { async } from '@firebase/util'
-
-const authNormal = getAuth(app)
-//proveedor de gugul
-const provider = new GoogleAuthProvider()
-
 export default function PantallaRegis({ navigation }) {
   const [user, setUser] = useState({
     checkout: false,
@@ -49,14 +36,12 @@ export default function PantallaRegis({ navigation }) {
 
   //funcion crear cuenta
   const singUp = () => {
-    createUserWithEmailAndPassword(authNormal, user.email, user.password)
+    auth()
+      .createUserWithEmailAndPassword(user.email, user.password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user
 
         navigation.navigate('Origen')
-
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code
@@ -136,7 +121,6 @@ export default function PantallaRegis({ navigation }) {
           already have an account?
           <TouchableOpacity
             onPress={() => {
-              console.log('Login')
               navigation.navigate('Login')
             }}
           >

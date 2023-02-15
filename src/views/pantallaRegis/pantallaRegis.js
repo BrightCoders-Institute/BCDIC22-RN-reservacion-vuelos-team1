@@ -14,6 +14,7 @@ import { Check } from '../../components/check/check'
 import { BotonSUP } from '../../components/botonSUP/botonSUP'
 import { BotonSUG } from '../../components/BotonSUG/botonSUG'
 import { CheckSubscribe } from '../../components/check/checkSubscribe'
+import { auth, GoogleSignin } from '../../../firebaseconfig'
 
 import {
   getAuth,
@@ -22,8 +23,9 @@ import {
   signInWithPopup,
 } from 'firebase/auth'
 import { app } from '../../../firebaseconfig'
+import { async } from '@firebase/util'
 
-const auth = getAuth(app)
+const authNormal = getAuth(app)
 //proveedor de gugul
 const provider = new GoogleAuthProvider()
 
@@ -47,7 +49,7 @@ export default function PantallaRegis({ navigation }) {
 
   //funcion crear cuenta
   const singUp = () => {
-    createUserWithEmailAndPassword(auth, user.email, user.password)
+    createUserWithEmailAndPassword(authNormal, user.email, user.password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user
@@ -65,22 +67,21 @@ export default function PantallaRegis({ navigation }) {
   }
 
   // funcion de inicio con google
-  const singInGoogle = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result)
-        const token = credential.accessToken
-        // The signed-in user info.
-        const user = result.user
-        // ...
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code
-        const errorMessage = error.message
-        Alert.alert(errorCode, errorMessage)
-      })
+  const singInGoogle = async () => {
+    try {
+      await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true })
+      const idToken = (await GoogleSignin.signIn()).idToken
+      const credential = auth.GoogleAuthProvider.credential(idToken)
+      await auth().signInWithCredential(credential)
+      navigation.navigate('Vuelos')
+    } catch (error) {
+      console.log(error)
+      if (error instanceof Error) {
+        Alert.alert('Error', error.message)
+      } else {
+        console.error(error)
+      }
+    }
   }
 
   return (
@@ -124,7 +125,9 @@ export default function PantallaRegis({ navigation }) {
         <BotonSUG
           title="sign up with google"
           disabled={!validation()}
-          onPress={singInGoogle}
+          onPress={async () => {
+            singInGoogle()
+          }}
         />
       </View>
 

@@ -4,22 +4,41 @@ import Titulo from '../../components/titulo/titulo'
 import { Button, TextInput } from 'react-native-paper'
 import CiudadPais from '../../components/ciudadPais/ciudadPais'
 import styles from './styles'
-import { Calendar } from 'react-native-calendars'
-import moment from 'moment'
+import WheelPicker from 'react-native-wheely'
 import { BotonSUP } from '../../components/botonSUP/botonSUP'
+import firestore from '@react-native-firebase/firestore'
+import { auth } from '../../../firebaseconfig'
 
-const PantallaCalendario = ({ route, navigation }) => {
-  const [day, setDay] = useState('')
+const PantallaVueloF = ({ route, navigation }) => {
+  const [selectedIndex, setSelectedIndex] = useState(0)
+
+  const saveFlight = async () => {
+    await firestore()
+      .collection('users')
+      .doc(auth().currentUser?.uid)
+      .collection('flights')
+      .add({
+        origen: route.params.origen,
+        destino: route.params.destino,
+        fecha: route.params.fecha,
+        pasajeros: route.params.pasajeros,
+      })
+  }
+
+  const onFinish = async () => {
+    await saveFlight()
+    navigation.navigate('Vuelos')
+  }
 
   return (
-    <View style={styles.background}>
+    <View>
       <View style={styles.btnAtras}>
         <Button
           style={styles.btnBack}
           icon="arrow-left"
           mode="text"
           onPress={() => {
-            navigation.navigate('Destino')
+            navigation.navigate('Calendario')
           }}
         ></Button>
       </View>
@@ -40,29 +59,20 @@ const PantallaCalendario = ({ route, navigation }) => {
         </Text>
       </View>
       <View style={styles.titulo}>
-        <Titulo title="Select date" />
+        <View>
+          <Text>{route.params.fecha}</Text>
+        </View>
+        <View>
+          <Text> Passengers {route.params.pasajeros}</Text>
+        </View>
+        <Titulo title="your request was received" />
       </View>
-      <View style={styles.seleccion}>
-        <Calendar
-          markedDates={{
-            [day]: {
-              selected: styles.markedDates.selected,
-              selectedColor: styles.markedDates.selectedColor,
-            },
-          }}
-          onDayPress={(day) => setDay(day.dateString)}
-          minDate={moment().format('YYYY-MM-DD')}
-        />
-      </View>
+      <View style={styles.seleccion}></View>
       <View style={styles.btn}>
         <BotonSUP
-          title="Next"
-          onPress={() => {
-            navigation.navigate('Pasajeros', {
-              origen: route.params.origen,
-              destino: route.params.destino,
-              fecha: day,
-            })
+          title={'Finish'}
+          onPress={async () => {
+            await onFinish()
           }}
         />
       </View>
@@ -70,4 +80,4 @@ const PantallaCalendario = ({ route, navigation }) => {
   )
 }
 
-export default PantallaCalendario
+export default PantallaVueloF
